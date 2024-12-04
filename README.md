@@ -1,8 +1,7 @@
 # pam - Safe Rust API to the Linux Pluggable Authentication Modules (PAM)
 
-[![Crates.io](https://img.shields.io/crates/v/pam.svg)](https://crates.io/crates/pam)
+[![Crates.io](https://img.shields.io/crates/v/pam-f.svg)](https://crates.io/crates/pam-f)
 [![Documentation](https://docs.rs/pam/badge.svg)](https://docs.rs/pam/)
-[![Build Status](https://dev.azure.com/1wilkens/ci/_apis/build/status/pam?branchName=master)](https://dev.azure.com/1wilkens/ci/_build/latest?definitionId=2&branchName=master)
 [![License](https://img.shields.io/crates/l/pam.svg?branch=master)](https://travis-ci.org/1wilkens/pam)
 
 Note: Currently only supports basic username/password authentication out-of-the-box.
@@ -16,11 +15,10 @@ Environment support through the `env` module is probably broken and should not b
 1. Add `pam` to your Cargo.toml:
 ```toml
 [dependencies]
-pam = "0.7.0"
+pam = { package = "pam-f", version = "0.8.1" }
 ```
 2. Use the `Authenticator` struct to authenticate and open a session
 ```rust
-extern crate pam;
 pub fn main() {
         let service = "<yourapp>";
         let user = "<user>";
