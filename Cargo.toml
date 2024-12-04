@@ -1,11 +1,12 @@
 [workspace.package]
-version = "0.8.1"
+version = "0.8.2"
 edition = "2021"
 authors = [
 	"Florian Wilkens <gh@1wilkens.org>",
 	"Decodertalkers <aakari@tutanota.com>",
 ]
 license = "MIT OR Apache-2.0"
+repository = "https://github.com/Decodertalkers/pam/"
 
 [workspace]
 members = [".", "macros"]
@@ -25,7 +26,7 @@ description = "Safe Rust wrappers for PAM authentication"
 license = "MIT OR Apache-2.0"
 categories = ["authentication"]
 
-repository = "https://github.com/Decodertalkers/pam/"
+repository.workspace = true
 documentation = "https://docs.rs/pam-f/"
 readme = "README.md"
 include = ["LICENSE-*", "README.md", "CHANGELOG.md", "/src", "/examples"]

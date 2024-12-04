@@ -6,6 +6,7 @@ description = "Macros for the pam crate"
 license.workspace = true
 documentation = "https://docs.rs/pam_macros_f/"
 edition.workspace = true
+repository.workspace = true
 
 [lib]
 proc-macro = true
