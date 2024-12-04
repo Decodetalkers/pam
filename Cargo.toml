@@ -14,8 +14,8 @@ members = [".", "macros"]
 pam-macros-f = { version = "0.8.1", path = "./macros" }
 libc = "^0.2"
 pam-sys = "1.0.0-alpha5"
-memchr = "2.5.0"
-uzers = "0.11.3"
+memchr = "2.7.4"
+uzers = "0.12.1"
 
 [package]
 name = "pam-f"
@@ -48,4 +48,4 @@ uzers = { workspace = true, optional = true }
 
 
 [dev-dependencies]
-rpassword = "7.2.0"
+rpassword = "7.3.1"

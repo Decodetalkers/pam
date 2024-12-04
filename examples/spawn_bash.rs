@@ -2,7 +2,7 @@ use std::io::{stdin, stdout, Write};
 use std::os::unix::process::CommandExt;
 use std::process::Command;
 
-use pam::Client;
+use pam_f::Client;
 use rpassword::prompt_password;
 use uzers::get_user_by_name;
 

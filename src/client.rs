@@ -10,7 +10,7 @@ use crate::{conv, enums::*, functions::*, types::*};
 /// and to the following flow:
 ///
 /// ```no_run
-/// use pam::Client;
+/// use pam_f::Client;
 ///
 /// let mut client = Client::with_password("system-auth")
 ///         .expect("Failed to init PAM client.");
