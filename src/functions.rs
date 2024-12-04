@@ -18,8 +18,8 @@ pub use misc::*;
 mod appl {
     use crate::{ffi, PamFlag, PamHandle, PamResult, PamReturnCode};
 
-    use std::ffi::CString;
     use libc::c_int;
+    use std::ffi::CString;
 
     /// Create the PAM context and initiate the PAM transaction
     ///
@@ -122,8 +122,8 @@ mod appl {
 mod types {
     use crate::{env, ffi, PamHandle, PamItemType, PamResult, PamReturnCode};
 
-    use std::ffi::{CStr, CString};
     use libc::{c_char, c_int, c_void};
+    use std::ffi::{CStr, CString};
 
     /// Update PAM information of type `item_type` in the associated PAM transaction
     #[inline]
@@ -276,8 +276,8 @@ mod misc {
 mod modules {
     use crate::{ffi, PamHandle, PamResult, PamReturnCode};
 
-    use std::ffi::{CStr, CString};
     use libc::{c_char, c_int, c_void};
+    use std::ffi::{CStr, CString};
 
     /// Associate a pointer to an object with the given `module_data_name` in
     /// the current PAM context

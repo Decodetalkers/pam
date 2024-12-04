@@ -65,12 +65,12 @@ impl<'a, C: conv::Conversation> Client<'a, C> {
 
     /// Immutable access to the conversation handler of this Client
     pub fn conversation(&self) -> &C {
-        &*self.conversation
+        &self.conversation
     }
 
     /// Mutable access to the conversation handler of this Client
     pub fn conversation_mut(&mut self) -> &mut C {
-        &mut *self.conversation
+        &mut self.conversation
     }
 
     /// Perform authentication with the provided credentials
@@ -105,7 +105,7 @@ impl<'a, C: conv::Conversation> Client<'a, C> {
     pub fn get_user(&mut self) -> PamResult<String> {
         get_item(self.handle, PamItemType::User).and_then(|result| {
             // Pam user is a char *
-            let ptr: *const c_char = unsafe { std::mem::transmute(result) };
+            let ptr: *const c_char = result as *const libc::c_void as *const i8;
             let username = unsafe { CStr::from_ptr(ptr) };
             match username.to_str() {
                 Err(_) => Err(PamError(PamReturnCode::System_Err)),
@@ -147,12 +147,8 @@ impl<'a, C: conv::Conversation> Client<'a, C> {
     fn initialize_environment(&mut self) -> PamResult<()> {
         use uzers::os::unix::UserExt;
 
-        let user = uzers::get_user_by_name(&self.get_user()?).unwrap_or_else(|| {
-            panic!(
-                "Could not get user by name: {:?}",
-                self.get_user()
-            )
-        });
+        let user = uzers::get_user_by_name(&self.get_user()?)
+            .unwrap_or_else(|| panic!("Could not get user by name: {:?}", self.get_user()));
 
         // Set some common environment variables
         self.set_env(
@@ -197,7 +193,7 @@ impl<'a, C: conv::Conversation> Client<'a, C> {
     }
 }
 
-impl<'a, C: conv::Conversation> Drop for Client<'a, C> {
+impl<C: conv::Conversation> Drop for Client<'_, C> {
     fn drop(&mut self) {
         if self.has_open_session && self.close_on_drop {
             close_session(self.handle, false);

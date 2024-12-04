@@ -20,11 +20,13 @@ pub trait Conversation {
     ///
     /// This would typically be the username. The exact question is provided as the
     /// `msg` argument if you wish to display it to your user.
+    #[allow(clippy::result_unit_err)]
     fn prompt_echo(&mut self, msg: &CStr) -> Result<CString, ()>;
     /// PAM requests a value that should be typed blindly by the user
     ///
     /// This would typically be the password. The exact question is provided as the
     /// `msg` argument if you wish to display it to your user.
+    #[allow(clippy::result_unit_err)]
     fn prompt_blind(&mut self, msg: &CStr) -> Result<CString, ()>;
     /// This is an informational message from PAM
     fn info(&mut self, msg: &CStr);

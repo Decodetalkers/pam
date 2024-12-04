@@ -1,18 +1,20 @@
 use libc::c_char;
 use memchr::memchr;
 
-use std::vec::IntoIter;
 use std::ffi::{CStr, OsString};
+use std::vec::IntoIter;
 
 pub struct PamEnvList {
-    inner: IntoIter<(OsString, OsString)>
+    inner: IntoIter<(OsString, OsString)>,
 }
 
 impl Iterator for PamEnvList {
     type Item = (String, String);
 
     fn next(&mut self) -> Option<(String, String)> {
-        self.inner.next().map(|(a, b)| (a.into_string().unwrap(), b.into_string().unwrap()))
+        self.inner
+            .next()
+            .map(|(a, b)| (a.into_string().unwrap(), b.into_string().unwrap()))
     }
     fn size_hint(&self) -> (usize, Option<usize>) {
         self.inner.size_hint()
@@ -36,10 +38,11 @@ impl PamEnvList {
         }
 
         drop_env_list(ptr);
-        return PamEnvList { inner: result.into_iter() };
+        PamEnvList {
+            inner: result.into_iter(),
+        }
     }
 }
-
 
 fn parse_env_line(input: &[u8]) -> Option<(OsString, OsString)> {
     // Strategy (copied from glibc): Variable name and value are separated
