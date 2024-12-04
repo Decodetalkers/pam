@@ -1,8 +1,26 @@
-[package]
+[workspace.package]
+version = "0.8.1"
+edition = "2021"
+authors = [
+	"Florian Wilkens <gh@1wilkens.org>",
+	"Decodertalkers <aakari@tutanota.com>",
+]
+license = "MIT OR Apache-2.0"
 
-name = "pam"
-version = "0.8.0"
-authors = ["Florian Wilkens <gh@1wilkens.org>"]
+[workspace]
+members = [".", "macros"]
+
+[workspace.dependencies]
+pam-macros-f = { version = "0.8.1", path = "./macros" }
+libc = "^0.2"
+pam-sys = "1.0.0-alpha5"
+memchr = "2.5.0"
+uzers = "0.11.3"
+
+[package]
+name = "pam-f"
+version.workspace = true
+authors.workspace = true
 description = "Safe Rust wrappers for PAM authentication"
 license = "MIT OR Apache-2.0"
 categories = ["authentication"]
@@ -10,12 +28,9 @@ categories = ["authentication"]
 repository = "https://github.com/1wilkens/pam/"
 documentation = "https://docs.rs/pam/"
 readme = "README.md"
-include = [ "LICENSE-*", "README.md", "CHANGELOG.md", "/src", "/examples"  ]
+include = ["LICENSE-*", "README.md", "CHANGELOG.md", "/src", "/examples"]
 
-edition = "2018"
-
-[badges]
-azure-devops = { project = "1wilkens/ci", pipeline = "pam" }
+edition.workspace = true
 
 [features]
 default = ["client"]
@@ -25,17 +40,12 @@ client = ["uzers"]
 module = []
 
 [dependencies]
-pam-macros = "=0.0.3"
-libc    = "^0.2"
-pam-sys = "1.0.0-alpha5"
-memchr = "2.5.0"
-uzers = { version = "0.11.3", optional = true }
+pam-macros-f.workspace = true
+libc.workspace = true
+pam-sys.workspace = true
+memchr.workspace = true
+uzers = { workspace = true, optional = true }
+
 
 [dev-dependencies]
 rpassword = "7.2.0"
-
-[workspace]
-members = [
-    ".",
-    "macros"
-]

@@ -4,7 +4,7 @@
 //!
 //! This modules contains struct and enum definitions used by `pam-sys`.
 
-use pam_macros::pam_enum;
+use pam_macros_f::pam_enum;
 
 /// The Linux-PAM return values
 #[pam_enum]

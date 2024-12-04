@@ -1,15 +1,11 @@
 [package]
-
-name = "pam-macros"
-version = "0.0.3"
-authors = ["Florian Wilkens <gh@1wilkens.org>"]
+name = "pam-macros-f"
+version.workspace = true
+authors.workspace = true
 description = "Macros for the pam crate"
-license = "MIT OR Apache-2.0"
-
-repository = "https://github.com/1wilkens/pam/"
+license.workspace = true
 documentation = "https://docs.rs/pam_macros/"
-
-edition = "2018"
+edition.workspace = true
 
 [lib]
 proc-macro = true
