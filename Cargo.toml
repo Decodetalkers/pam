@@ -25,8 +25,8 @@ description = "Safe Rust wrappers for PAM authentication"
 license = "MIT OR Apache-2.0"
 categories = ["authentication"]
 
-repository = "https://github.com/1wilkens/pam/"
-documentation = "https://docs.rs/pam/"
+repository = "https://github.com/Decodertalkers/pam/"
+documentation = "https://docs.rs/pam-f/"
 readme = "README.md"
 include = ["LICENSE-*", "README.md", "CHANGELOG.md", "/src", "/examples"]
 

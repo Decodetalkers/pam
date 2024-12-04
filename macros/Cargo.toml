@@ -4,7 +4,7 @@ version.workspace = true
 authors.workspace = true
 description = "Macros for the pam crate"
 license.workspace = true
-documentation = "https://docs.rs/pam_macros/"
+documentation = "https://docs.rs/pam_macros_f/"
 edition.workspace = true
 
 [lib]
